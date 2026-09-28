@@ -114,9 +114,10 @@ body {
   border-bottom: 1px solid var(--border);
 }
 .stat-cell {
-  padding: 20px 24px 20px 0;
+  padding: 20px 24px;
   border-right: 1px solid var(--border);
 }
+.stat-cell:first-child { padding-left: 0; }
 .stat-cell:last-child { border-right: none; }
 @media (max-width: 600px) {
   .stats-bar { grid-template-columns: 1fr 1fr; }
@@ -317,7 +318,7 @@ body {
     <div class="case-tags">
       <span class="case-tag accent">Реальный клиент</span>
       <span class="case-tag">Юридическая фирма · B2B</span>
-      <span class="case-tag">Москва · 2025</span>
+      <span class="case-tag">Москва · 2026</span>
       <span class="case-tag live">Сайт запущен</span>
     </div>
     <h1 class="case-title">Цитадель Права</h1>
@@ -356,9 +357,9 @@ body {
   <!-- ПОДХОД: ТЗ -->
   <section class="section">
     <p class="sec-label">Подход</p>
-    <h2 class="sec-title">Начала с опросника, а не с макета</h2>
-    <p class="sec-body">Большинство дизайн-проектов начинаются с «нарисуй что-нибудь красивое». Я начала с опросника — составила список вопросов по целевой аудитории, позиционированию, структуре, болям клиентов и ключевым услугам.</p>
-    <p class="sec-body">После интервью с заказчиком сама зафиксировала всё в техническое задание: концепцию, визуальный язык, структуру 7 страниц, требования к логотипу, компонентам и вёрстке. ТЗ согласовали — и только после этого я открыла редактор.</p>
+    <h2 class="sec-title">ТЗ — это отдельная работа, а не формальность</h2>
+    <p class="sec-body">Прежде чем открыть редактор, я провела аудит существующего сайта и составила опросник для заказчика. Не «что нравится», а конкретика: целевая аудитория, ключевые услуги, болевые точки клиентов, позиционирование на рынке.</p>
+    <p class="sec-body">По итогам интервью собрала итоговое ТЗ: концепцию, визуальный язык, структуру 7 страниц, требования к логотипу и компонентам. Согласовали с заказчиком — и только потом начала проектировать.</p>
     <div class="tz-grid">
       <div class="tz-item">
         <div class="tz-item-title">Аудитория</div>
