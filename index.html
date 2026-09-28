@@ -193,7 +193,8 @@ nav {
   position: absolute;
   top: 0; left: 50%;
   width: 2px; height: 100%;
-  background: #fff;
+  background: linear-gradient(to bottom, rgba(255,255,255,.3), #fff 20%, #fff 80%, rgba(255,255,255,.3));
+  box-shadow: 0 0 10px rgba(255,255,255,.5);
   transform: translateX(-50%);
   pointer-events: none;
 }
@@ -201,14 +202,29 @@ nav {
   position: absolute;
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
-  width: 44px; height: 44px;
+  width: 48px; height: 48px;
   border-radius: 50%;
-  background: #fff;
-  box-shadow: 0 2px 12px rgba(0,0,0,.25);
+  background: rgba(255,255,255,.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1.5px solid rgba(255,255,255,.9);
+  box-shadow: 0 4px 20px rgba(0,0,0,.22);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--accent);
+}
+.cs-handle::after {
+  content: '';
+  position: absolute;
+  inset: -7px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,.55);
+  animation: cs-pulse 2s ease-in-out infinite;
+}
+@keyframes cs-pulse {
+  0%, 100% { opacity: .3; transform: scale(1); }
+  50%       { opacity: .85; transform: scale(1.12); }
 }
 .cs-labels-row {
   display: flex;
@@ -735,6 +751,24 @@ footer {
   function setPos(x) {
     var rect = slider.getBoundingClientRect();
     var pct = Math.max(0, Math.min(100, (x - rect.left) / rect.width * 100));
+    divider.style.left = pct + '%';
+    after.style.clipPath = 'inset(0 0 0 ' + pct + '%)';
+  }
+
+  // Auto-animate on load: drift left to reveal the "before" side
+  setTimeout(function() {
+    var start = null, from = 50, to = 28, dur = 1300;
+    function step(ts) {
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      var ease = p < 0.5 ? 4*p*p*p : 1 - Math.pow(-2*p+2,3)/2;
+      setPos2(from + (to - from) * ease);
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }, 900);
+
+  function setPos2(pct) {
     divider.style.left = pct + '%';
     after.style.clipPath = 'inset(0 0 0 ' + pct + '%)';
   }
