@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Tina Uma · Дизайн</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap">
+<style>
+:root {
+  --bg: #F5F2EC;
+  --bg-card: #FFFFFF;
+  --bg-muted: #EDE9E2;
+  --text: #191815;
+  --muted: #706D67;
+  --accent: #1A5940;
+  --accent-lt: #D2EAE0;
+  --warm: #C95120;
+  --border: #DDD9D2;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #191815;
+    --bg-card: #211F1C;
+    --bg-muted: #2A2824;
+    --text: #EDE9E3;
+    --muted: #8F8C86;
+    --accent: #3B8F68;
+    --accent-lt: #1A3528;
+    --warm: #E06B45;
+    --border: #302E2A;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #191815;
+  --bg-card: #211F1C;
+  --bg-muted: #2A2824;
+  --text: #EDE9E3;
+  --muted: #8F8C86;
+  --accent: #3B8F68;
+  --accent-lt: #1A3528;
+  --warm: #E06B45;
+  --border: #302E2A;
+  color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: clamp(15px, 1.8vw, 17px);
+  line-height: 1.7;
+}
+
+/* NAV */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px;
+}
+.nav-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+}
+.nav-name {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--text);
+  text-decoration: none;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  list-style: none;
+  padding: 0;
+}
+.nav-links a {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color .15s;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-links .nav-dev {
+  padding: 5px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.nav-links .nav-dev:hover { border-color: var(--accent); color: var(--accent); }
+@media (max-width: 520px) {
+  .nav-links .hide-sm { display: none; }
+}
+
+/* WRAP */
+.wrap { max-width: 960px; margin: 0 auto; padding-inline: 24px; }
+
+/* HERO */
+.hero {
+  padding-block: 80px 64px;
+  border-bottom: 1px solid var(--border);
+}
+.hero-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+.hero-title {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: clamp(30px, 5.5vw, 54px);
+  line-height: 1.08;
+  font-weight: 400;
+  text-wrap: balance;
+  max-width: 720px;
+  margin-bottom: 20px;
+}
+.hero-sub {
+  font-size: 17px;
+  color: var(--muted);
+  max-width: 580px;
+  line-height: 1.65;
+  margin-bottom: 32px;
+}
+.hero-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.pill {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 20px;
+  background: var(--accent-lt);
+  color: var(--accent);
+}
+
+/* SECTION HEADER */
+.sec-header {
+  padding-block: 56px 32px;
+}
+.sec-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.sec-title {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: clamp(22px, 3.5vw, 34px);
+  font-weight: 400;
+  line-height: 1.2;
+  text-wrap: balance;
+  margin-bottom: 10px;
+}
+.sec-desc {
+  font-size: 15px;
+  color: var(--muted);
+  max-width: 560px;
+  line-height: 1.65;
+}
+
+/* CASE GRID */
+.case-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  padding-bottom: 64px;
+  border-bottom: 1px solid var(--border);
+}
+.case-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: border-color .15s, box-shadow .15s;
+}
+.case-card:hover { border-color: var(--accent); box-shadow: 0 4px 20px rgba(0,0,0,.07); }
+.case-card.coming {
+  opacity: .55;
+  pointer-events: none;
+}
+.case-tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.case-name {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+.case-desc {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+  flex: 1;
+}
+.case-footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+.status-badge {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+.status-badge.live { background: var(--accent); color: #fff; }
+.status-badge.wip  { background: var(--bg-muted); color: var(--muted); }
+.case-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.case-link:hover { text-decoration: underline; }
+
+/* SERVICE B BLOCK */
+.service-b {
+  padding-block: 56px;
+  border-bottom: 1px solid var(--border);
+}
+.service-b-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+@media (max-width: 620px) {
+  .service-b-inner { grid-template-columns: 1fr; }
+}
+.service-b-text {}
+.service-b-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+.service-b-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+.service-b-item::before {
+  content: "→";
+  color: var(--accent);
+  font-weight: 600;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.service-b-card {
+  background: var(--accent);
+  color: #fff;
+  border-radius: 12px;
+  padding: 28px;
+}
+.service-b-card-title {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+.service-b-card-desc {
+  font-size: 14px;
+  opacity: .82;
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+.service-b-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.service-b-card-tag {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: rgba(255,255,255,.15);
+  border: 1px solid rgba(255,255,255,.25);
+}
+
+/* FOOTER */
+footer {
+  padding-block: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.footer-name { font-weight: 600; font-size: 15px; }
+.footer-sub  { font-size: 13px; color: var(--muted); margin-top: 2px; }
+.footer-links {
+  display: flex;
+  gap: 16px;
+  list-style: none;
+  padding: 0;
+}
+.footer-links a {
+  font-size: 13px;
+  color: var(--muted);
+  text-decoration: none;
+}
+.footer-links a:hover { color: var(--text); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-name" href="#">Tina Uma</a>
+    <ul class="nav-links">
+      <li class="hide-sm"><a href="#cases">Кейсы</a></li>
+      <li class="hide-sm"><a href="#portfolio">Портфолио</a></li>
+      <li><a href="https://tinacodes.space" target="_blank" rel="noopener" class="nav-dev">Dev →</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero-eyebrow">Дизайн · Контент · IT-продукты</p>
+    <h1 class="hero-title">Лендинги, которым<br>можно верить</h1>
+    <p class="hero-sub">Изучаю продукт изнутри — читаю код, нахожу расхождения с реальностью — и строю страницу которая честно продаёт то что есть.</p>
+    <div class="hero-pills">
+      <span class="pill">Продуктовый анализ</span>
+      <span class="pill">UX-копирайтинг</span>
+      <span class="pill">Дизайн лендингов</span>
+      <span class="pill">IT-продукты</span>
+    </div>
+  </section>
+
+  <!-- SERVICE A: Редизайн -->
+  <div class="sec-header" id="cases">
+    <p class="sec-label">Услуга 01</p>
+    <h2 class="sec-title">Редизайн IT-лендингов</h2>
+    <p class="sec-desc">Берём существующий лендинг, сверяем с кодом и реальным продуктом, убираем несоответствия. Тексты — из продукта, не из головы.</p>
+  </div>
+
+  <div class="case-grid">
+    <!-- CASE 1: Vazera — ГОТОВ -->
+    <div class="case-card">
+      <span class="case-tag">Сервис для флористов</span>
+      <div class="case-name">Vazera</div>
+      <p class="case-desc">AI-сервис делает видео из одного фото букета. Нашла 4 несоответствия между макетом и кодом — исправила без единой строки брифа.</p>
+      <div class="case-footer-row">
+        <span class="status-badge live">Готов</span>
+        <a class="case-link" href="vazera/" target="_blank">Смотреть кейс →</a>
+      </div>
+    </div>
+
+    <!-- CASE 2: Tausik — В процессе -->
+    <div class="case-card">
+      <span class="case-tag">AI-фреймворк</span>
+      <div class="case-name">Tausik</div>
+      <p class="case-desc">Редизайн лендинга фреймворка для управления AI-агентами. Новый визуальный язык — терминальные анимации, матричный дождь, строгая иерархия.</p>
+      <div class="case-footer-row">
+        <span class="status-badge wip">Скоро</span>
+      </div>
+    </div>
+
+    <!-- CASE 3: placeholder -->
+    <div class="case-card coming">
+      <span class="case-tag">IT-продукт</span>
+      <div class="case-name">Кейс 3</div>
+      <p class="case-desc">Скоро</p>
+      <div class="case-footer-row">
+        <span class="status-badge wip">Скоро</span>
+      </div>
+    </div>
+
+    <!-- CASE 4: placeholder -->
+    <div class="case-card coming">
+      <span class="case-tag">IT-продукт</span>
+      <div class="case-name">Кейс 4</div>
+      <p class="case-desc">Скоро</p>
+      <div class="case-footer-row">
+        <span class="status-badge wip">Скоро</span>
+      </div>
+    </div>
+
+    <!-- CASE 5: placeholder -->
+    <div class="case-card coming">
+      <span class="case-tag">IT-продукт</span>
+      <div class="case-name">Кейс 5</div>
+      <p class="case-desc">Скоро</p>
+      <div class="case-footer-row">
+        <span class="status-badge wip">Скоро</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICE B: Портфолио для спецов -->
+  <section class="service-b" id="portfolio">
+    <div class="sec-header" style="padding-block: 0 32px;">
+      <p class="sec-label">Услуга 02</p>
+      <h2 class="sec-title">Портфолио для специалистов</h2>
+      <p class="sec-desc">Разработчикам некогда делать себе сайт-визитку — а уродское портфолио режет конверсию на собесах. Делаю под ключ.</p>
+    </div>
+    <div class="service-b-inner">
+      <div class="service-b-text">
+        <ul class="service-b-list">
+          <li class="service-b-item">Разбираю ваши проекты и навыки — сама формулирую тексты</li>
+          <li class="service-b-item">Дизайн и вёрстка — адаптив, тёмная тема, без шаблонов</li>
+          <li class="service-b-item">Хостинг на GitHub Pages — бесплатно и навсегда</li>
+          <li class="service-b-item">Результат: живая ссылка которую не стыдно отправить рекрутеру</li>
+        </ul>
+      </div>
+      <div class="service-b-card">
+        <div class="service-b-card-title">Под ключ за неделю</div>
+        <p class="service-b-card-desc">Вы рассказываете о себе — я строю сайт. Без брифов на 30 пунктов и без "пришлите логотип в PNG".</p>
+        <div class="service-b-card-tags">
+          <span class="service-b-card-tag">Разработчики</span>
+          <span class="service-b-card-tag">QA-инженеры</span>
+          <span class="service-b-card-tag">ML-специалисты</span>
+          <span class="service-b-card-tag">Дизайнеры</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <div class="footer-name">Тина Юмашева</div>
+      <div class="footer-sub">UX-дизайн · Продуктовый анализ</div>
+    </div>
+    <ul class="footer-links">
+      <li><a href="mailto:umashevapromt@gmail.com">Email</a></li>
+      <li><a href="https://t.me/tinauma" target="_blank" rel="noopener">Telegram</a></li>
+      <li><a href="https://github.com/TinaUma" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="https://tinacodes.space" target="_blank" rel="noopener">Dev</a></li>
+    </ul>
+  </footer>
+
+</div>
+</body>
+</html>
