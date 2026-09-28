@@ -734,7 +734,7 @@ footer {
 
   function setPos(x) {
     var rect = slider.getBoundingClientRect();
-    var pct = Math.max(5, Math.min(95, (x - rect.left) / rect.width * 100));
+    var pct = Math.max(0, Math.min(100, (x - rect.left) / rect.width * 100));
     divider.style.left = pct + '%';
     after.style.clipPath = 'inset(0 0 0 ' + pct + '%)';
   }
