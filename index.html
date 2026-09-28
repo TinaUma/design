@@ -168,7 +168,7 @@ nav {
 .cs-outer {
   position: relative;
   width: 100%;
-  height: 400px;
+  height: 600px;
   overflow: hidden;
   border-radius: 12px;
   border: 1px solid var(--border);
@@ -176,7 +176,7 @@ nav {
   user-select: none;
   -webkit-user-select: none;
 }
-@media (max-width: 600px) { .cs-outer { height: 220px; } }
+@media (max-width: 600px) { .cs-outer { height: 340px; } }
 .cs-before, .cs-after {
   position: absolute;
   inset: 0;
@@ -210,19 +210,20 @@ nav {
   justify-content: center;
   color: var(--accent);
 }
-.cs-label {
-  position: absolute;
-  top: 14px;
+.cs-labels-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.cs-label-text {
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: .08em;
+  letter-spacing: .1em;
   text-transform: uppercase;
-  padding: 4px 10px;
-  border-radius: 4px;
-  pointer-events: none;
+  color: var(--muted);
 }
-.cs-label-before { left: 14px; background: rgba(0,0,0,.55); color: #fff; }
-.cs-label-after  { right: 14px; background: var(--accent); color: #fff; }
+.cs-label-text.before { color: var(--muted); }
+.cs-label-text.after  { color: var(--accent); }
 .cs-hint {
   font-size: 12px;
   color: var(--muted);
@@ -529,14 +530,16 @@ footer {
   <!-- BEFORE / AFTER SLIDER -->
   <div class="cs-wrap">
     <p class="cs-kicker">Пример трансформации — юридическая фирма «Цитадель»</p>
+    <div class="cs-labels-row">
+      <span class="cs-label-text before">← До редизайна</span>
+      <span class="cs-label-text after">После редизайна →</span>
+    </div>
     <div class="cs-outer" id="compSlider">
       <div class="cs-before">
         <img src="images/citadel-before.jpg" alt="Сайт до редизайна">
-        <span class="cs-label cs-label-before">До</span>
       </div>
       <div class="cs-after">
         <img src="images/citadel-after.jpg" alt="Сайт после редизайна">
-        <span class="cs-label cs-label-after">После</span>
       </div>
       <div class="cs-divider" id="csDivider">
         <div class="cs-handle">
@@ -550,21 +553,18 @@ footer {
   <!-- USP STRIP -->
   <div class="usp-strip">
     <div class="usp-item">
-      <div class="usp-icon">⚡</div>
       <div class="usp-text">
         <strong>Результат за 2–5 дней</strong>
         <span>От первого разговора до готовой страницы</span>
       </div>
     </div>
     <div class="usp-item">
-      <div class="usp-icon">🎨</div>
       <div class="usp-text">
         <strong>Всё под ключ</strong>
         <span>Логотип, визуал, тексты, вёрстка — одна рука</span>
       </div>
     </div>
     <div class="usp-item">
-      <div class="usp-icon">🔍</div>
       <div class="usp-text">
         <strong>Понимаю продукт изнутри</strong>
         <span>Есть репозиторий — читаю код. Нет — изучаю и верстаю начисто</span>
