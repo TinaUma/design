@@ -110,8 +110,7 @@ nav {
 
 /* HERO */
 .hero {
-  padding-block: 80px 64px;
-  border-bottom: 1px solid var(--border);
+  padding-block: 80px 48px;
 }
 .hero-eyebrow {
   font-size: 11px;
@@ -153,6 +152,46 @@ nav {
   color: var(--accent);
 }
 
+/* USP STRIP */
+.usp-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 0;
+}
+.usp-item {
+  flex: 1 1 200px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 18px 24px 18px 0;
+  border-right: 1px solid var(--border);
+}
+.usp-item:last-child { border-right: none; padding-right: 0; }
+@media (max-width: 600px) {
+  .usp-item { border-right: none; padding: 14px 0; border-bottom: 1px solid var(--border); }
+  .usp-item:last-child { border-bottom: none; }
+}
+.usp-icon {
+  font-size: 18px;
+  line-height: 1;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+.usp-text strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.3;
+}
+.usp-text span {
+  font-size: 12px;
+  color: var(--muted);
+}
+
 /* SECTION HEADER */
 .sec-header {
   padding-block: 56px 32px;
@@ -183,24 +222,32 @@ nav {
 /* CASE GRID */
 .case-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   padding-bottom: 64px;
   border-bottom: 1px solid var(--border);
+}
+@media (max-width: 700px) {
+  .case-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 460px) {
+  .case-grid { grid-template-columns: 1fr; }
 }
 .case-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 12px;
-  padding: 24px;
+  padding: 22px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
   transition: border-color .15s, box-shadow .15s;
+  text-decoration: none;
+  color: inherit;
 }
-.case-card:hover { border-color: var(--accent); box-shadow: 0 4px 20px rgba(0,0,0,.07); }
+a.case-card:hover { border-color: var(--accent); box-shadow: 0 4px 20px rgba(0,0,0,.07); }
 .case-card.coming {
-  opacity: .55;
+  opacity: .5;
   pointer-events: none;
 }
 .case-tag {
@@ -217,16 +264,31 @@ nav {
   line-height: 1.2;
 }
 .case-desc {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--muted);
   line-height: 1.6;
   flex: 1;
+}
+.case-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 2px;
+}
+.chip {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  padding: 3px 8px;
+  border-radius: 10px;
+  background: var(--bg-muted);
+  color: var(--muted);
 }
 .case-footer-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 4px;
+  margin-top: 6px;
 }
 .status-badge {
   font-size: 10px;
@@ -238,16 +300,14 @@ nav {
 }
 .status-badge.live { background: var(--accent); color: #fff; }
 .status-badge.wip  { background: var(--bg-muted); color: var(--muted); }
-.case-link {
+.case-link-arrow {
   font-size: 13px;
   font-weight: 600;
   color: var(--accent);
-  text-decoration: none;
   display: flex;
   align-items: center;
   gap: 4px;
 }
-.case-link:hover { text-decoration: underline; }
 
 /* SERVICE B BLOCK */
 .service-b {
@@ -263,7 +323,6 @@ nav {
 @media (max-width: 620px) {
   .service-b-inner { grid-template-columns: 1fr; }
 }
-.service-b-text {}
 .service-b-list {
   list-style: none;
   padding: 0;
@@ -319,6 +378,20 @@ nav {
   background: rgba(255,255,255,.15);
   border: 1px solid rgba(255,255,255,.25);
 }
+.example-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255,255,255,.85);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,.3);
+  padding-bottom: 1px;
+  transition: color .15s;
+}
+.example-link:hover { color: #fff; border-color: rgba(255,255,255,.7); }
 
 /* FOOTER */
 footer {
@@ -364,73 +437,142 @@ footer {
   <section class="hero">
     <p class="hero-eyebrow">Дизайн · Контент · IT-продукты</p>
     <h1 class="hero-title">Лендинги, которым<br>можно верить</h1>
-    <p class="hero-sub">Изучаю продукт изнутри — читаю код, нахожу расхождения с реальностью — и строю страницу которая честно продаёт то что есть.</p>
+    <p class="hero-sub">Читаю код продукта, нахожу расхождения с реальностью — и строю страницу которая честно продаёт то что есть. Логотип, визуал и тексты — в комплекте.</p>
     <div class="hero-pills">
       <span class="pill">Продуктовый анализ</span>
       <span class="pill">UX-копирайтинг</span>
       <span class="pill">Дизайн лендингов</span>
-      <span class="pill">IT-продукты</span>
+      <span class="pill">Логотип включён</span>
     </div>
   </section>
 
-  <!-- SERVICE A: Редизайн -->
+  <!-- USP STRIP -->
+  <div class="usp-strip">
+    <div class="usp-item">
+      <div class="usp-icon">⚡</div>
+      <div class="usp-text">
+        <strong>Результат за 2–5 дней</strong>
+        <span>От первого разговора до готовой страницы</span>
+      </div>
+    </div>
+    <div class="usp-item">
+      <div class="usp-icon">🎨</div>
+      <div class="usp-text">
+        <strong>Всё под ключ</strong>
+        <span>Логотип, визуал, тексты, вёрстка — одна рука</span>
+      </div>
+    </div>
+    <div class="usp-item">
+      <div class="usp-icon">🔍</div>
+      <div class="usp-text">
+        <strong>Читаю код продукта</strong>
+        <span>Без расхождений между реальностью и страницей</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICE A: Редизайн / лендинги -->
   <div class="sec-header" id="cases">
     <p class="sec-label">Услуга 01</p>
-    <h2 class="sec-title">Редизайн IT-лендингов</h2>
-    <p class="sec-desc">Берём существующий лендинг, сверяем с кодом и реальным продуктом, убираем несоответствия. Тексты — из продукта, не из головы.</p>
+    <h2 class="sec-title">Лендинги под ключ</h2>
+    <p class="sec-desc">Редизайн или с нуля — изучаю продукт, формирую смысловую структуру, подбираю или генерирую визуал. Заказчику не нужно искать дизайнера, копирайтера и иллюстратора отдельно.</p>
   </div>
 
   <div class="case-grid">
-    <!-- CASE 1: Vazera — ГОТОВ -->
-    <div class="case-card">
-      <span class="case-tag">Сервис для флористов</span>
+
+    <!-- Citadel — юридическая фирма -->
+    <div class="case-card coming">
+      <span class="case-tag">Юридическая фирма</span>
+      <div class="case-name">Цитадель</div>
+      <p class="case-desc">Редизайн сайта юридической группы. Navy/gold, строгая иерархия, новый логотип — разработан с нуля.</p>
+      <div class="case-chips">
+        <span class="chip">Логотип</span>
+        <span class="chip">Фирстиль</span>
+        <span class="chip">Редизайн</span>
+      </div>
+      <div class="case-footer-row">
+        <span class="status-badge wip">Скоро</span>
+      </div>
+    </div>
+
+    <!-- Vazera — готов -->
+    <a class="case-card" href="vazera/" target="_blank">
+      <span class="case-tag">AI-сервис для флористов</span>
       <div class="case-name">Vazera</div>
-      <p class="case-desc">AI-сервис делает видео из одного фото букета. Нашла 4 несоответствия между макетом и кодом — исправила без единой строки брифа.</p>
+      <p class="case-desc">Нашла 4 несоответствия между макетом и кодом. Исправила без брифа — только анализ продукта изнутри.</p>
+      <div class="case-chips">
+        <span class="chip">Редизайн</span>
+        <span class="chip">Контент</span>
+        <span class="chip">Форматы</span>
+      </div>
       <div class="case-footer-row">
         <span class="status-badge live">Готов</span>
-        <a class="case-link" href="vazera/" target="_blank">Смотреть кейс →</a>
+        <span class="case-link-arrow">Смотреть →</span>
+      </div>
+    </a>
+
+    <!-- PrintPoint — типография -->
+    <div class="case-card coming">
+      <span class="case-tag">Типография</span>
+      <div class="case-name">PrintPoint</div>
+      <p class="case-desc">Редизайн с нуля: не было ни картинок, ни текстов. Писала сама, генерировала визуал, придумывала концепцию.</p>
+      <div class="case-chips">
+        <span class="chip">Визуал с нуля</span>
+        <span class="chip">Тексты</span>
+        <span class="chip">Концепция</span>
+      </div>
+      <div class="case-footer-row">
+        <span class="status-badge wip">Скоро</span>
       </div>
     </div>
 
-    <!-- CASE 2: Tausik — В процессе -->
-    <div class="case-card">
+    <!-- SignDrop — свой продукт -->
+    <a class="case-card" href="https://signdrop.site/" target="_blank" rel="noopener">
+      <span class="case-tag">SaaS-инструмент · Свой продукт</span>
+      <div class="case-name">SignDrop</div>
+      <p class="case-desc">Подпись PDF прямо в браузере. Сделала продукт с тимлидом от идеи до деплоя — и лендинг для него тоже.</p>
+      <div class="case-chips">
+        <span class="chip">Продукт с нуля</span>
+        <span class="chip">Лендинг</span>
+        <span class="chip">Деплой</span>
+      </div>
+      <div class="case-footer-row">
+        <span class="status-badge live">Живой сайт</span>
+        <span class="case-link-arrow">Открыть →</span>
+      </div>
+    </a>
+
+    <!-- Tausik — AI-фреймворк -->
+    <div class="case-card coming">
       <span class="case-tag">AI-фреймворк</span>
       <div class="case-name">Tausik</div>
-      <p class="case-desc">Редизайн лендинга фреймворка для управления AI-агентами. Новый визуальный язык — терминальные анимации, матричный дождь, строгая иерархия.</p>
+      <p class="case-desc">Редизайн лендинга фреймворка для управления AI-агентами. Новый визуальный язык для dev-аудитории.</p>
+      <div class="case-chips">
+        <span class="chip">Редизайн</span>
+        <span class="chip">Dev-продукт</span>
+        <span class="chip">UI-система</span>
+      </div>
       <div class="case-footer-row">
         <span class="status-badge wip">Скоро</span>
       </div>
     </div>
 
-    <!-- CASE 3: placeholder -->
-    <div class="case-card coming">
-      <span class="case-tag">IT-продукт</span>
-      <div class="case-name">Кейс 3</div>
-      <p class="case-desc">Скоро</p>
-      <div class="case-footer-row">
-        <span class="status-badge wip">Скоро</span>
+    <!-- ai-vibe-station — портфолио -->
+    <a class="case-card" href="https://tinauma.github.io/ai-vibe-station/" target="_blank" rel="noopener">
+      <span class="case-tag">Личный бренд · Пример</span>
+      <div class="case-name">AI Vibe Station</div>
+      <p class="case-desc">Собственное портфолио-визитка. Пример того что получают специалисты по услуге 02.</p>
+      <div class="case-chips">
+        <span class="chip">Портфолио</span>
+        <span class="chip">GitHub Pages</span>
+        <span class="chip">Под ключ</span>
       </div>
-    </div>
+      <div class="case-footer-row">
+        <span class="status-badge live">Живой сайт</span>
+        <span class="case-link-arrow">Открыть →</span>
+      </div>
+    </a>
 
-    <!-- CASE 4: placeholder -->
-    <div class="case-card coming">
-      <span class="case-tag">IT-продукт</span>
-      <div class="case-name">Кейс 4</div>
-      <p class="case-desc">Скоро</p>
-      <div class="case-footer-row">
-        <span class="status-badge wip">Скоро</span>
-      </div>
-    </div>
-
-    <!-- CASE 5: placeholder -->
-    <div class="case-card coming">
-      <span class="case-tag">IT-продукт</span>
-      <div class="case-name">Кейс 5</div>
-      <p class="case-desc">Скоро</p>
-      <div class="case-footer-row">
-        <span class="status-badge wip">Скоро</span>
-      </div>
-    </div>
   </div>
 
   <!-- SERVICE B: Портфолио для спецов -->
@@ -445,6 +587,7 @@ footer {
         <ul class="service-b-list">
           <li class="service-b-item">Разбираю ваши проекты и навыки — сама формулирую тексты</li>
           <li class="service-b-item">Дизайн и вёрстка — адаптив, тёмная тема, без шаблонов</li>
+          <li class="service-b-item">Логотип или аватар — рисую сама если нужно</li>
           <li class="service-b-item">Хостинг на GitHub Pages — бесплатно и навсегда</li>
           <li class="service-b-item">Результат: живая ссылка которую не стыдно отправить рекрутеру</li>
         </ul>
@@ -458,6 +601,9 @@ footer {
           <span class="service-b-card-tag">ML-специалисты</span>
           <span class="service-b-card-tag">Дизайнеры</span>
         </div>
+        <a class="example-link" href="https://tinauma.github.io/ai-vibe-station/" target="_blank" rel="noopener">
+          Посмотреть пример →
+        </a>
       </div>
     </div>
   </section>
@@ -470,7 +616,7 @@ footer {
     </div>
     <ul class="footer-links">
       <li><a href="mailto:umashevapromt@gmail.com">Email</a></li>
-      <li><a href="https://t.me/tinauma" target="_blank" rel="noopener">Telegram</a></li>
+      <li><a href="https://t.me/tina_yuma" target="_blank" rel="noopener">Telegram</a></li>
       <li><a href="https://github.com/TinaUma" target="_blank" rel="noopener">GitHub</a></li>
       <li><a href="https://tinacodes.space" target="_blank" rel="noopener">Dev</a></li>
     </ul>
